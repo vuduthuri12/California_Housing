@@ -1,9 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My First Page</title>
+    <meta charset="UTF-8">
+    <title>California House Price Prediction</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+            width: 400px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0078D7;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005bb5;
+        }
+        .result {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #222;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello world</h1>
+    <div class="container">
+        <h2>🏠 California House Price Predictor</h2>
+
+        <form action="/predict" method="post">
+            <label>Median Income (MedInc)</label>
+            <input type="text" name="MedInc" required>
+
+            <label>House Age</label>
+            <input type="text" name="HouseAge" required>
+
+            <label>Average Rooms (AveRooms)</label>
+            <input type="text" name="AveRooms" required>
+
+            <label>Population</label>
+            <input type="text" name="Population" required>
+
+            <label>Average Occupancy (AveOccup)</label>
+            <input type="text" name="AveOccup" required>
+
+            <label>Latitude</label>
+            <input type="text" name="Latitude" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
 </body>
 </html>
